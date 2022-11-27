@@ -1,0 +1,38 @@
+<div class="d-flex justify-content-between">
+  <h1>Articles</h1>
+  <div class="">
+    <button type="button" class="btn btn-primary" routerLink="/add-article">
+      Add new article
+    </button>
+  </div>
+</div>
+<div>
+  <table class="table table-striped">
+    <thead>
+      <th>Id</th>
+      <th>Title</th>
+      <th>Body</th>
+      <th>Author</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of listArticles">
+        <td>{{ item?.id }}</td>
+        <td>{{ item?.title }}</td>
+        <td>{{ item?.body }}</td>
+        <td>{{ item?.author }}</td>
+        <td>
+          <button
+            class="btn btn-info"
+            [routerLink]="['edit-article', item?.id]"
+          >
+            Edit
+          </button>
+          &nbsp;
+          <button class="btn btn-danger" (click)="deleteArticle(item?.id)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
